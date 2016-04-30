@@ -17,7 +17,7 @@ unsigned long reverse_number(unsigned long num)
 }
 int main()
 {
-	unsigned long t,n1,n2,sum;
+	unsigned long t,n1,n2;
 	cin>>t;
 	for(unsigned long i=0;i<t;i++)
 	{
