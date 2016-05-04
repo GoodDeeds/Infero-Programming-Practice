@@ -1,0 +1,16 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	long t,n;
+	cin>>t;
+	for(long i=0;i<t;i++)
+	{
+		cin>>n;
+		long sum1=(2*n*(n+1))/2;
+		long sum2=(n*(n-1))/2;
+		long res=(sum1+sum2)%1000007;
+		cout<<res<<endl;
+	}
+	return 0;
+}
