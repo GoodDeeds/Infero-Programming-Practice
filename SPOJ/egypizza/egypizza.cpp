@@ -45,7 +45,10 @@ int main()
 	{
 		long long int temp=arr[2]%4;
 		res+=arr[2]/4;
-		res+=temp;
+		if(temp!=0)
+		{
+			res++;
+		}
 		
 	}
 	res++;
