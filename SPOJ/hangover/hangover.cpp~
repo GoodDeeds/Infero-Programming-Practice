@@ -5,8 +5,8 @@ int main()
 	long double n;
 	int temp;
 	cin>>n;
-	temp=100*n;
-	n=(long double)(temp)/100.0;
+	//temp=100*n;
+	//n=(long double)(temp)/(long double)(100.0);
 	
 	while(n!=0)
 	{
@@ -17,13 +17,13 @@ int main()
 		{
 			sum+=(long double)(1/(long double)i);
 			sum2=sum;
-			temp=100*sum2;
-			sum2=(long double)(temp)/100.0;
+			//temp=100*sum2;
+			//sum2=(long double)(temp)/100.0;
 			i++;
 			
 		}
 		
-		cout<<i-2<<endl;
+		cout<<i-2<<" cards(s)"<<endl;
 		cin>>n;
 	}
 	return 0;
