@@ -1,0 +1,68 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	string inp,num="";
+	long long int t,n,bas[10],siz=0,c[10],*f;
+	getline(cin,inp);
+	cout<<inp<<endl;
+	for(int i=1;i<inp.size();i++)
+	{
+		if(inp[i]=='f')
+		{
+			
+			if(inp[i-1]!=' ')
+			{
+				int x=1;
+				while(inp[i-x]!=' ')
+				{
+					num=inp[i-x]+num;
+					x++;
+				}
+				c[siz]=stoi(num);
+			}
+			else
+			{
+				c[siz]=1;
+			}
+			siz++;
+		}
+	}
+	cout<<num<<endl;
+	for(int i=0;i<siz;i++)
+	{
+		cin>>bas[i];
+	}
+	cin>>t;
+	//cout<<"t "<<t<<"size "<<siz<<endl;
+	for(long long int i=0;i<t;i++)
+	{
+		cin>>n;
+		if(n<siz)
+		{
+			cout<<bas[n]<<endl;
+			continue;
+		}
+		f=new long long int[n+1];
+		for(int j=0;j<siz;j++)
+		{
+			f[j]=bas[j]%(1000000009);
+		}
+		for(long long int j=siz;j<=n;j++)
+		{
+			f[j]=0;
+			for(int k=0;k<siz;k++)
+			{
+				f[j]+=c[k]*f[j-1-k];
+				
+			}
+			f[j]=f[j]%(1000000009);
+		}
+		f[n]=f[n]%(1000000009);
+		cout<<f[n]<<endl;
+	}
+	return 0;
+	
+	
+}

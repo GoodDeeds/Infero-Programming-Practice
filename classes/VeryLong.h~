@@ -22,6 +22,6 @@ VeryLong::VeryLong()
 }
 VeryLong& VeryLong::operator+(VeryLong &n)
 {
-	
+			
 }
 

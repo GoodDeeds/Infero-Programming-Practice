@@ -1,5 +1,6 @@
 #include<iostream>
 using namespace std;
+int g,b,*arr;
 int min(int x,int y)
 {
 	if(x<y)
@@ -8,30 +9,44 @@ int min(int x,int y)
 	}
 	return y;
 }
+void placb(int g1, int b1)
+{
+	placb(g1/2);
+	placb(g1-g1/2);
+		
+}
 int main()
 {
-	int g,b;
+	
 	cin>>g>>b;
+	arr=new int[g+b];
 	while(g!=-1 && b!=-1)
 	{
-		if(g<=b)
+		//if(g<=b)
+		//{
+			//while(g!=0)
+			//{
+				//g--;
+				//b--;
+			//}
+			//cout<<b+1<<endl;
+		//}
+		//else
+		//{
+			//while(b!=0)
+			//{
+				//b--;
+				//g--;
+			//}
+			//cout<<g+1<<endl;
+		//}
+		if(b>g)
 		{
-			while(g!=0)
-			{
-				g--;
-				b--;
-			}
-			cout<<b+1<<endl;
+			g=b+g;
+			b=g-b;
+			g=g-b;
 		}
-		else
-		{
-			while(b!=0)
-			{
-				b--;
-				g--;
-			}
-			cout<<g+1<<endl;
-		}
+		placb(g,b);
 		cin>>g>>b;
 		
 		
