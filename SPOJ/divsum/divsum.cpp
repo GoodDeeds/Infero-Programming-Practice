@@ -1,3 +1,4 @@
+//Solved with help
 #include<iostream>
 #include<cmath>
 using namespace std;
@@ -11,18 +12,23 @@ int main()
 		sum=0;
 		for(j=1;j<sqrt(n);j++)
 		{
+			
 			if(n%j==0)
 			{
+				//cout<<"% "<<j<<" "<<n/j<<endl;
 				sum+=j;
 				sum+=n/j;
 			}
+			//cout<<"S: "<<sum<<endl;
 		}
-		if(pow(sqrt(n),2)==n)
+		
+		if(pow((int)(sqrt(n)),2)==n)
 		{
 			
 			sum+=sqrt(n);
+			//cout<<"Hello!"<<endl;
 		}
-		//cout<<"POW "<<pow(sqrt(n),2)<<endl;
+		//cout<<"POW "<<pow(sqrt(n),2)<<" "<<n<<endl;
 		sum-=n;
 		cout<<sum<<endl;
 		
