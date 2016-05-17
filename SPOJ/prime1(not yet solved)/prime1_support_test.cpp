@@ -19,7 +19,7 @@ int main()
 				{
 					continue;
 				}
-		for(j=2;j<i;j++)
+		for(j=2;j<sqrt(i);j++)
 		{
 			if(i%j==0)
 			{
