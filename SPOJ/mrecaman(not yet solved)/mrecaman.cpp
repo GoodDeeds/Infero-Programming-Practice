@@ -1,11 +1,13 @@
 #include<iostream>
+#include<malloc.h>
 #include<vector>
 using namespace std;
-static int arr[500001];
+int *arr=(int*)malloc(sizeof(int)*500001);
 int a(int m)
 {
 	if(m==0)
 	{
+		arr[0]=0;
 		return 0;
 	}
 	if(arr[m]!=-1)
@@ -14,31 +16,32 @@ int a(int m)
 	}
 	else
 	{
-		if(a(m-1)>m)
+		int temp=a(m-1);
+		if(temp>m)
 		{
 			int flag=0;
-			for(int j=0;j<m;j++)
-			{
-				if((a(m-1)-m)==a(j))
-				{
-					flag=1;
-					break;
-				}
-			}
+			//for(int j=0;j<m;j++)
+			//{
+				//if((temp-m)==a(j))
+				//{
+					//flag=1;
+					//break;
+				//}
+			//}
 			if(flag==0)
 			{
-				arr[m]=a(m-1)-m;
+				arr[m]=temp-m;
 				return arr[m];
 			}	
 			else
 			{
-				arr[m]=a(m-1)+m;
+				arr[m]=temp+m;
 				return arr[m];
 			}
 		}
 		else
 		{
-			arr[m]=a(m-1)+m;
+			arr[m]=temp+m;
 			return arr[m];
 		}
 	}
@@ -51,7 +54,7 @@ int main()
 	}
 	arr[0]=0;
 	int k;
-	int l=a(400000);
+	//int l=a(4000);
 	cin>>k;
 	while(k!=-1)
 	{

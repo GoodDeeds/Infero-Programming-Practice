@@ -1,11 +1,12 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-static long long int arr[500001];
-long long int a(long long int m)
+int *arr=(int*)malloc(sizeof(int)*500001);
+int a(int m)
 {
 	if(m==0)
 	{
+		arr[0]=0;
 		return 0;
 	}
 	if(arr[m]!=-1)
@@ -14,48 +15,49 @@ long long int a(long long int m)
 	}
 	else
 	{
-		if(a(m-1)>m)
+		int temp=a(m-1);
+		if(temp>m)
 		{
-			long long int flag=0;
-			for(long long int j=0;j<m;j++)
-			{
-				if((a(m-1)-m)==a(j))
-				{
-					flag=1;
-					break;
-				}
-			}
+			int flag=0;
+			//for(int j=0;j<m;j++)
+			//{
+				//if((temp-m)==a(j))
+				//{
+					//flag=1;
+					//break;
+				//}
+			//}
 			if(flag==0)
 			{
-				arr[m]=a(m-1)-m;
+				arr[m]=temp-m;
 				return arr[m];
 			}	
 			else
 			{
-				arr[m]=a(m-1)+m;
+				arr[m]=temp+m;
 				return arr[m];
 			}
 		}
 		else
 		{
-			arr[m]=a(m-1)+m;
+			arr[m]=temp+m;
 			return arr[m];
 		}
 	}
 }
 int main()
 {
-	for(long long int i=0;i<500001;i++)
+	for(int i=0;i<500001;i++)
 	{
 		arr[i]=-1;
 	}
 	arr[0]=0;
-	long long int k;
-	long long int l=a(400000);
+	int k;
+	//int l=a(4000);
 	cin>>k;
 	while(k!=-1)
 	{
-		long long int j=a(k);
+		int j=a(k);
 		cout<<j<<endl;
 		cin>>k;
 	}
