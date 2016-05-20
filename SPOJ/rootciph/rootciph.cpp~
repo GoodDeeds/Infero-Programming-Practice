@@ -1,0 +1,16 @@
+#include<iostream>
+#include<stdio.h>
+#include<cmath>
+using namespace std;
+int main()
+{
+	long long int t,a,b,c,i,j,k,l;
+	scanf("%ld",&t);
+	for(i=0;i<t;i++)
+	{
+		scanf("%ld%ld%ld",&a,&b,&c);
+		j=pow(a,2)-2*b;
+		printf("%ld\n",j);
+	}
+	return 0;
+}
