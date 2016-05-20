@@ -1,0 +1,38 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	long long int t,n,i,j,k,l;
+	cin>>t;
+	for(i=0;i<t;i++)
+	{
+		cin>>n;
+		if(n==0)
+		{
+			cout<<"10"<<endl;
+			continue;
+		}
+		int flag=0;
+		string s="";
+		for(j=9;j>=2;j--)
+		{
+			while(n%j==0)
+			{
+				flag=1;
+				s=to_string(j)+s;
+				n/=j;
+			}
+		}
+		if(flag==0)
+		{
+			cout<<"-1"<<endl;
+		}
+		else
+		{
+			cout<<s<<endl;
+		}
+		
+	}
+	return 0;
+}
