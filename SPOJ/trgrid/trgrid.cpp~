@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	long long int t,n,m,i,j,k;
+	cin>>t;
+	for(i=0;i<t;i++)
+	{
+		cin>>n>>m;
+		while(n>2 && m>2)
+		{
+			n-=2;
+			m-=2;
+		}
+		if(m==1 && n==1)
+		{
+			cout<<"R"<<endl;
+			continue;
+		}
+		else if(m==2 && n==2)
+		{
+			cout<<"L"<<endl;
+			continue;
+		}
+		else if(m==1)
+		{
+			cout<<"D"<<endl;
+		}
+		else if(n==1)
+		{
+			cout<<"R"<<endl;
+		}
+		else if(m==2)
+		{
+			cout<<"U"<<endl;
+		}
+		else if(n==2)
+		{
+			cout<<"L"<<endl;
+		}
+	}
+	return 0;
+}
