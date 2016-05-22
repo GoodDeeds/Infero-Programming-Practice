@@ -1,0 +1,152 @@
+#include <map>
+#include <set>
+#include <list>
+#include <cmath>
+#include <ctime>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <string>
+#include <bitset>
+#include <cstdio>
+#include <limits>
+#include <vector>
+#include <climits>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <numeric>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
+
+
+using namespace std;
+
+
+int main(){
+    int n;
+    int k;
+    cin >> n >> k;
+    string number;
+    cin >> number;
+    long long int i,count=0;
+    for(i=0;i<(number.size()/2);i++)
+    {
+    	if(number[i]!=number[n-i-1])
+    	{
+    		count++;
+    	}
+    }
+    if(k<count)
+    {
+    	cout<<"-1"<<endl;
+    }
+    else
+    {
+    	/*for(i=0;i<(number.size()/2);i++)
+   	    {
+    		if(number[i]>number[n-i-1])
+    		{
+    			number[n-i-1]=number[i];
+    			k--;
+    		}
+    		else if(number[n-i-1]>number[i])
+    		{
+    			number[i]=number[n-i-1];
+    			k--;
+    		}
+    	}	
+    	i=0;
+    	while(k>1 && i<=(number.size()/2))
+    	{
+    		if(number[i]!='9')
+    		{
+    			number[i]=number[n-i-1]='9';
+    			k-=2;
+    		}
+    		i++;
+    		
+    	}
+    	if(k==1 && number.size()%2==1)
+    	{
+    		number[number.size()/2]='9';
+    	}
+    	cout<<number<<endl;*/
+    	//cout<<"c: "<<count<<"k: "<<k<<endl;
+    	long long int diff=(k-count)/2;
+    	int flag=0;
+    	for(i=0;i<(number.size()/2);i++)
+   	    {
+    		flag=0;
+    		if(k-count>1 && number[i]==number[n-i-1] && number[i]!='9')
+    		{
+    			number[i]=number[n-i-1]='9';
+    			k-=2;
+    		}
+    		else if( number[i]!=number[n-i-1])
+    		{
+    			if(number[i]=='9' && number[n-i-1]!='9' && k-count>=0)
+    			{
+    				k--;
+    				number[i]=number[n-i-1]='9';
+    				flag=1;
+    			
+    				count--;
+    			}
+    			else if(number[i]!='9' && number[n-i-1]=='9' && k-count>=0)
+    			{
+    				k--;
+    				number[i]=number[n-i-1]='9';
+    				flag=1;
+    			
+    				count--;
+    			}
+    			else if(k-count>0)
+    			{
+    				k-=2;
+    				number[i]=number[n-i-1]='9';
+    				flag=1;
+    			
+    				count--;
+    			}
+    			
+    		}
+    		if(number[i]>number[n-i-1] && flag==0)
+    		{
+    			number[n-i-1]=number[i];
+    			k--;
+    			count--;
+    			//cout<<"A"<<endl;
+    		}
+    		if(number[n-i-1]>number[i] && flag==0)
+    		{
+    			number[i]=number[n-i-1];
+    			k--;
+    			count--;
+    			//cout<<"B"<<endl;
+    		}
+    	//	cout<<"c: "<<count<<" k: "<<k<<" ni: "<<number[i]<<" nn-i-1: "<<number[n-i-1]<<endl;
+    		
+    	}
+    	
+    	i=0;
+    	while(k>1 && i<=(number.size()/2))
+    	{
+    		if(number[i]!='9')
+    		{
+    			number[i]=number[n-i-1]='9';
+    			k-=2;
+    		}
+    		i++;
+    		
+    	}
+    	if(k==1 && number.size()%2==1)
+    	{
+    		number[number.size()/2]='9';
+    	}	
+    	cout<<number<<endl;
+    }
+    return 0;
+}
+
