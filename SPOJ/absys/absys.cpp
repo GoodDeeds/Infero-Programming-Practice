@@ -1,0 +1,94 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	int stat=1;
+	string inp,dummy;
+	long long int val1,val2,val3,t,i,j,k,l;
+	cin>>t;
+	getline(cin,dummy);
+	for(i=0;i<t;i++)
+	{
+		
+		stat=1;
+		getline(cin,dummy);
+		getline(cin,inp);
+		//cout<<"inp: "<<inp<<endl;
+		for(j=0;j<inp.size();j++)
+		{
+			if(inp[j]=='m')
+			{
+				break;
+			}
+			if(inp[j]=='+')
+			{
+				stat=2;
+			}
+			if(inp[j]=='=')
+			{
+				stat=3;
+			}
+			
+		}
+	//	cout<<"st: "<<stat<<endl;
+		//cout<<"in: "<<inp<<endl;
+		int c=0,temp;
+		for(j=0;j<inp.size();j++)
+		{
+			if(inp[j]==' ')
+			{
+				if(c==0 && stat!=1)
+				{
+					val1=stoi(inp.substr(0,j));
+					c++;
+				}
+				else if(c==0 && stat==1)
+				{
+					c++;
+				}	
+				else if(c==1 && stat!=2)
+				{
+					temp=j+1;
+					c++;
+				}
+				else if(c==1 && stat==2)
+				{
+					c++;
+				}
+				else if(c==2 && stat!=2)
+				{
+					val2=stoi(inp.substr(temp,j-temp));
+					c++;
+				}
+				else if(c==2 && stat==2)
+				{
+					c++;
+				}
+				else if(c==3 && stat!=3)
+				{
+					val3=stoi(inp.substr(j+1));
+					break;
+				}
+				
+			}
+		}
+		if(stat==1)
+		{
+			val1=val3-val2;
+			
+		}
+		else if(stat==2)
+		{
+			val2=val3-val1;
+		//	cout<<"v: "<<val2<<" "<<val1<<" "<<val3<<endl;
+		}
+		else if(stat==3)
+		{
+			val3=val1+val2;
+		}	
+		cout<<val1<<" + "<<val2<<" = "<<val3<<endl;
+	}
+	return 0;
+	
+}
