@@ -1,63 +1,56 @@
+//can be probably done much better
 #include<iostream>
 #include<cmath>
+#include<vector>
 using namespace std;
 int main()
 {
-	long long int t,m,n,i,j,k;
-	int flag;
+	long long int t,n,m,i,j,k,l,limsieve;
 	cin>>t;
 	for(i=0;i<t;i++)
 	{
 		cin>>m>>n;
-		if(m<2)
+		limsieve=floor(sqrt(n))+1;
+		int *boolarr=new int[limsieve];
+		int *res=new int[limsieve];
+		for(j=0;j<limsieve;j++)
 		{
-			cout<<"2"<<endl;
+			boolarr[j]=0;
+			res[j]=0;
 		}
-		if(m%2==0)
+		long long int coun=0;
+		for(j=2;j<limsieve;j++)
 		{
-			for(j=m+1;j<=n;j+=2)
+			if(boolarr[j]==0)
 			{
-				flag=0;
-				if((j%3==0 || j%5==0 || j%7==0 || j%11==0 || j%13==0 ||j%17==0 ||j%19==0) && j!=3 && j!=5 && j!=7 &&j!=11 && j!=13 && j!=17 && j!=19)
+				for(k=j*2;k<limsieve;k+=j)
 				{
-					continue;
+					boolarr[k]=1;
 				}
-				for(k=2;k<=sqrt(j);k++)
+				res[coun]=j;
+				coun++;
+			}
+		}
+		int flag=0;
+		for(j=m;j<=n;j++)
+		{
+			flag=0;
+			for(k=0;k<coun;k++)
+			{
+				if(j%res[k]==0 && res[k]!=j)
 				{
-					if(j%k==0)
-					{
-						flag=1;
-						break;
-					}
-				}
-				if(flag==0 && j!=1)
-				{
-					cout<<j<<endl;
+					flag=1;
+					break;
 				}
 			}
-		}		
-		else
-		{
-			for(j=m;j<=n;j+=2)
+			if(flag==0 && j>=2)
 			{
-				flag=0;
-				if((j%3==0 || j%5==0 || j%7==0 || j%11==0 || j%13==0 ||j%17==0 ||j%19==0) && j!=3 && j!=5 && j!=7 &&j!=11 && j!=13 && j!=17 && j!=19)
-				{
-					continue;
-				}
-				for(k=2;k<=sqrt(j);k++)
-				{
-					if(j%k==0)
-					{
-						flag=1;
-						break;
-					}
-				}
-				if(flag==0 && j!=1)
-				{
-					cout<<j<<endl;
-				}
+				cout<<j<<endl;
 			}
+			/*if(boolarr[j]==0 && j>=2)
+			{
+				cout<<j<<endl;
+			}*/
 		}
 		cout<<endl;
 	}
