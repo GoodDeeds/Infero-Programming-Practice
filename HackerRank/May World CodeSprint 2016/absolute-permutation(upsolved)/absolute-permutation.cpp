@@ -1,4 +1,4 @@
-//did noy cleat two test cases (#9,#10) due to timeout
+//did not clear two test cases (#9,#10) due to timeout
 #include <cmath>
 #include <cstdio>
 #include <vector>
@@ -7,7 +7,8 @@
 using namespace std;
 
 
-int main() {
+int main()
+{
     long long int t,n,k,i,j,l;
     cin>>t;
     for(i=0;i<t;i++)
@@ -87,12 +88,6 @@ int main() {
     				{
     					flag=1;
     					break;
-    				}
-    				else if(stat[j-1]==0)
-    				{
-    					arr[min(j+k,abs(j-k))-1]=j;
-						stat[j-1]=1;
-						count++;    
     				}
     				
     			}
