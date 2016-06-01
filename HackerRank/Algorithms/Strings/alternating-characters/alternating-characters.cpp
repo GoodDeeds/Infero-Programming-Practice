@@ -16,7 +16,7 @@ int main()
 			flag=0;
 			while((j+1)<inp.size() && inp[j]==inp[j+1])
 			{
-				//inp=inp.substr(0,j+1)+inp.substr(j+2);
+				
 				count++;
 				flag=1;
 				j++;
