@@ -24,7 +24,7 @@ int main()
 		s2=inp.substr((inp.size()/2));
 		sort(s1.begin(),s1.end());
 		sort(s2.begin(),s2.end());
-		cout<<"s1: "<<s1<<" s2: "<<s2<<endl;
+		//cout<<"s1: "<<s1<<" s2: "<<s2<<endl;
 		int count=0;
 		for(j=0;j<(inp.size()/2);j++)
 		{
