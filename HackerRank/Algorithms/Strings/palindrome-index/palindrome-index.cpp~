@@ -1,0 +1,41 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	int t,i,j;
+	string inp;
+	cin>>t;
+	for(i=0;i<t;i++)
+	{
+		cin>>inp;
+		int flag=0;
+		for(j=0;j<(inp.size()/2);j++)
+		{
+			if(inp.size()>2 && inp[j]!=inp[inp.size()-j-1])
+			{
+				if( inp[j]==inp[inp.size()-j-2])
+				{
+					cout<<(inp.size()-j-1)<<endl;
+				}
+				else if(inp[j+1]==inp[inp.size()-j-1])
+				{
+					cout<<j<<endl;
+				}
+				flag=1;
+				break;
+			}
+			else if(inp.size()<=2 && inp[j]!=inp[inp.size()-j-1])
+			{
+				cout<<j<<endl;
+				flag=1;
+				break;
+			}
+		}
+		if(flag==0)
+		{
+			cout<<"-1"<<endl;
+		}
+	}
+	return 0;
+}
