@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int h,u,d,f,i,j,k,da=0;
+	long double updis,dis=0.0;
+	cin>>h>>u>>d>>f;
+	updis=u;
+	while(h!=0)
+	{
+		da=0;
+		dis=0.0;
+		updis=u;
+		
+		do
+		{	
+			da++;
+			dis+=updis;
+			if(dis>h)
+			{
+				break;
+			}
+			dis-=d;
+			
+			updis=updis-(((long double)f)*u)/100.0;
+			if(updis<=0)
+			{
+				updis=0;
+			}
+			
+			
+		}while(dis>=0 && dis<=h);
+		if(dis<h)
+		{
+			cout<<"failure on day "<<da<<endl;
+		}
+		else
+		{
+			cout<<"success on day "<<da<<endl;
+		}
+		cin>>h>>u>>d>>f;
+		
+	}
+	return 0;
+}
