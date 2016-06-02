@@ -1,0 +1,51 @@
+#include<iostream>
+using namespace std;
+long long arr[1000001];
+long long cyclelength(int x)
+{
+	if(arr[x]!=0)
+	{
+		return arr[x];
+	}
+	long long res=0,val=x;
+	if(val==1)
+	{
+		arr[1]=1;
+		return arr[1];
+	}
+	while(val!=1)
+	{
+		if(val%2==1)
+		{
+			val=3*val+1;
+		}
+		else
+		{
+			val/=2;
+		}
+		
+		res++;
+		
+	}
+	res++;
+	arr[x]=res;
+	return res;
+}
+int main()
+{
+	int i,j,x,y,z;
+	while(cin>>i>>j)
+	{
+		long long maxval=0,temp;
+		for(x=min(i,j);x<=max(i,j);x++)
+		{
+			temp=cyclelength(x);
+			if(maxval<temp)
+			{
+				maxval=temp;
+			}
+		}
+		cout<<i<<" "<<j<<" "<<maxval<<endl;
+	}
+	return 0;
+}
