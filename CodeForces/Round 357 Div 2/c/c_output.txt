@@ -1,0 +1,3 @@
+2
+insert 10
+getMin 10
