@@ -1,0 +1,6 @@
+fun main(args: Array<String>) {
+    val (a,x, y) = readLine()!!.split(' ').map(String::toInt)
+    if(x in 0..a)
+    {
+        if(
+}
