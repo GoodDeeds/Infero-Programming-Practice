@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	long long n,m,i,j,k,res=0,nt,mt;
+	cin>>n>>m;
+	long long arrn[5]={0},arrm[5]={0};
+	nt=n/5;
+	mt=m/5;
+	for(i=0;i<5;i++)
+	{
+		arrn[i]+=nt;
+		arrm[i]+=mt;
+	}
+	n-=(5*nt);
+	m-=(5*mt);
+	for(i=1;i<=n;i++)
+	{
+		arrn[i]++;
+	}
+	for(i=1;i<=m;i++)
+	{
+		arrm[i]++;
+	}
+	res+=(arrn[0]*arrm[0]);
+	for(i=1;i<=4;i++)
+	{
+		res+=(arrn[i]*arrm[5-i]);
+	}
+	for(i=0;i<5;i++)
+	{
+		cout<<arrn[i]<<" "<<arrm[i]<<endl;
+	}
+	cout<<res<<endl;
+	return 0;
+}
