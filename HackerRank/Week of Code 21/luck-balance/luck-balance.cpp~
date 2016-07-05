@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	long long n,k,i,count=0;
+	cin>>n>>k;
+	long long *l=new long long[n];
+	long long *t=new long long[n];
+	long long *impl=new long long[n];
+	long long res=0;
+	for(i=0;i<n;i++)
+	{
+		cin>>l[i]>>t[i];
+		if(t[i]==1)
+		{
+			impl[count]=l[i];
+			count++;
+			
+		}
+		res+=l[i];
+	}
+	long long diff=count-k;
+	sort(impl,impl+count);
+	i=0;
+	while(diff>0)
+	{
+		res-=(2*impl[i]);
+		diff--;
+	}
+	cout<<res<<endl;
+	return 0;
+}
