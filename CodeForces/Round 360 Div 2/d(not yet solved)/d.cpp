@@ -1,0 +1,91 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	long long n,k,i,j,k2;
+	cin>>n>>k;
+	k2=k;
+	list<int> fact;
+	fact.empty();
+	long long val;
+	int flag=0;
+	for(i=2;i<=k;i++)
+	{
+		val=1;
+		flag=0;
+		while(k%i==0)
+		{
+			val*=i;
+			
+			k/=i;
+			flag=1;
+		}
+		if(flag==1)
+		{
+			fact.push_back(val);
+		}
+	}
+	fact.sort();
+	
+	long long *c=new long long[n];
+	for(i=0;i<n;i++)
+	{
+		cin>>c[i];
+	}
+	sort(c,c+n);
+	list<int>::iterator it;
+	it=fact.begin();
+	flag=0;
+	for(i=0;i<n;i++,it++)
+	{
+		if(it==fact.end())
+		{
+			break;
+		}
+		if(c[i]>*it)
+		{
+			while(i<n && *it<c[i])
+			{
+				i++;
+			}
+		}
+		else if(*it>c[i])
+		{
+			while(i<n && *it>c[i])
+			{
+				i++;
+			}
+		}
+		if(i<n && *it!=c[i])
+		{
+			flag=1;
+		}
+		if(i==n)
+		{
+			flag=1;
+		}
+		
+	}
+	if(flag==1)
+	{
+		for(i=0;i<n;i++)
+		{
+			if(c[i]==k2)
+			{
+				flag=0;
+				break;
+				
+			}
+		}
+		
+	}
+	if(flag==0)
+	{
+		cout<<"Yes"<<endl;
+	}
+	else
+	{
+		cout<<"No"<<endl;
+	}
+	return 0;
+}
