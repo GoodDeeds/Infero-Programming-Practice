@@ -1,0 +1,77 @@
+#include<iostream>
+#include<algorithm>
+#include<cmath>
+#include<vector>
+using namespace std;
+int main()
+{
+	long long t,n,m,x,y,i,j,k,val;
+	cin>>t;
+	while(t--)
+	{
+		cin>>n>>m>>x>>y;
+		vector<long long> arr={};
+		
+		for(i=0;i<n;i++)
+		{
+			cin>>val;
+			arr.push_back(val);
+		}
+		long long startval=(x-1)/(pow(2,m));
+		long long endval=ceil(((long double)((y-1)))/(pow(2,m)));
+		long long size=endval-startval+1;
+		long long st2=startval,en2=endval;
+		vector<long long> rarr={};
+		for(i=startval;i<=endval;i++)
+		{
+			rarr.push_back(arr[i]);
+		}
+		cout<<"s: "<<startval<<" e: "<<endval<<endl;
+		for(i=0;i<m;i++)
+		{
+			
+			for(j=0;j<(2*size-1);j+=2)
+			{
+				rarr.insert(rarr.begin()+j+1,(rarr[j]+rarr[j+1])%(1000000007));
+			}
+			for(j=0;j<(2*size-1);j++)
+			{
+				cout<<rarr[j]<<" ";
+			}
+			cout<<endl;
+			size=2*size-1;
+			vector<long long> temp={};
+			st2=(x-1)/(pow(2,m-i-1));
+			en2=ceil(((long double)((y-1)))/(pow(2,m-i-1)));
+			cout<<"st2: "<<st2<<" en2: "<<en2<<endl;
+			cout<<"temp:"<<endl;
+			for(j=st2;j<=en2;j++)
+			{
+				temp.push_back(rarr[j]);
+				cout<<rarr[j]<<" ";
+				
+			}
+			
+			cout<<endl;
+			rarr.clear();
+			for(j=0;j<en2-st2+1;j++)
+			{
+				rarr.push_back(temp[j]);
+			}
+			temp.clear();
+			size=en2-st2+1;
+			
+		}
+		long long sum=0;
+		for(i=(x-1-pow(2,m)*startval);i<(y-pow(2,m)*startval);i++)
+		{
+			sum+=rarr[i];
+			
+			sum%=(1000000007);
+			
+		}
+		cout<<endl;
+		cout<<sum<<endl;
+	}
+	return 0;
+}

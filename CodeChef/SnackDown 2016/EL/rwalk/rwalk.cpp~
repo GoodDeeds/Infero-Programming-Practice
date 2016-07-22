@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	long long t,n,curval,netx,nety,i,j,k,stat=0;
+	string curturn;
+	cin>>t;
+	while(t--)
+	{
+		cin>>n;
+		long long *xarr=new long long[n/2+1];
+		long long *yarr=new long long[n/2+1];
+		long long ctrx=0,ctry=0;
+		stat=0;
+		cin>>curval;
+		nety+=curval;
+		for(i=0;i<n;i++)
+		{
+			cin>>curturn>>curval;
+			if(curturn=="L")
+			{
+				if(stat==0)
+				{
+					netx-=curval;
+					xarr[ctrx]=-curval;
+					ctrx++;
+					stat=1;
+				}
+				else
+				{
+					nety+=curval;
+					yarr[ctry]=curval;
+					ctry++;
+					stat=0;
+				}
+			}
+			else
+			{
+				if(stat==0)
+				{
+					netx+=curval;
+					xarr[ctrx]=curval;
+					ctrx++;
+					stat=1;
+				}
+				else
+				{
+					nety-=curval;
+					yarr[ctry]=-curval;
+					ctry++;
+					stat=0;
+					
+				}
+			}
+		}
+		sort(xarr,xarr+ctrx);
+		sort(yarr,yarr+ctry);
+		
+		
+	}
+	return 0;
+}
