@@ -1,0 +1,9 @@
+If you want to call a taxi, you should call: Rogulenko
+6
+.
+If you want to order a pizza, you should call: Rogulenko
+6
+, Kaluzhin, Fedorov.
+If you want to go to a cafe with a wonderful girl, you should call: Melnikov
+0
+.
