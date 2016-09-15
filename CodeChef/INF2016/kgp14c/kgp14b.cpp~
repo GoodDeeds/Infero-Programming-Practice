@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	long long n,p,q,i,j,k;
+	string s1,s2;
+	cin>>n;
+	while(n--)
+	{
+		cin>>p>>q;
+		cin>>s1>>s2;
+		long long **lcs=new long long*[p];
+		for(i=0;i<p;i++)
+		{
+			lcs[p]=new long long[q];
+			
+		}
+		for(i=p-1;i>=0;i--)
+		{
+			for(j=q-1;j>=0;j--)
+			{
+				if(s1[i]=='\0' || s2[j]=='\0')
+				{
+					lcs[i][j]=0;
+				}
+				else if(s1[i]==s2[j])
+				{
+					lcs[i][j]=1+lcs[i+1][j+1];
+				}
+				else
+				{
+					lcs[i][j]=max(lcs[i+1][j],lcs[i][j+1]);
+				}
+			}
+		}
+		long long res=min(abs(lcs[0][0]-s1.size()),abs(lcs[0][0]-s2.size()));
+		cout<<"Case "<<i+1<<": "<<res<<endl;
+	}
+}
