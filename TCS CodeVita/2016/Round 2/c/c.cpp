@@ -1,0 +1,123 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	long long lef,maxi,k;
+	unsigned long long i,j,rig;
+	scanf("%lld,%lld,%lld",&lef,&rig,&maxi);
+	string str;
+	vector<long long> pals;
+	vector<long long> diffs;
+	for(i=lef;i<=rig;i++)
+	{
+		stringstream sst;
+		sst<<i;
+		str=sst.str();
+		int flag=0;
+		for(j=0;j<str.size()/2;j++)
+		{
+			if(str[j]!=str[str.size()-1-j])
+			{
+				flag=1;
+				break;
+			}
+		}
+		if(flag==0)
+		{
+			pals.push_back(i);
+		}
+	}
+	if(pals.size()==0)
+	{
+		cout<<"0,0,0"<<endl;
+		return 0;
+	}
+	/*for(i=0;i<pals.size();i++)
+	{
+		cout<<pals[i]<<" ";
+	}
+	cout<<endl;*/
+	for(i=0;i<pals.size()-1;i++)
+	{
+		diffs.push_back(pals[i+1]-pals[i]);
+	}	
+	/*for(i=0;i<diffs.size();i++)
+	{
+		cout<<diffs[i]<<" ";
+	}
+	cout<<endl;*/
+	long long tempsum=0,cnt=0,maxcnt=0,maxsum=0,starti=0,fstarti=0,fendi=0;
+	for(j=0;j<diffs.size();j++)
+	{
+		starti=j;
+		if(fendi<fstarti)
+		{
+			fstarti=fendi=0;
+		}
+		cnt=0;
+		tempsum=0;
+		for(i=j;i<diffs.size();i++)
+		{
+			if((tempsum+diffs[i])<maxi)
+			{
+				tempsum+=diffs[i];
+				cnt++;
+				
+			}
+			else
+			{
+				if(cnt>maxcnt)
+				{
+//					cout<<"tc: "<<tempsum<<" m: "<<maxsum<<endl;
+					maxcnt=cnt;
+					maxsum=tempsum;
+					fstarti=j;
+					fendi=i;
+					
+				}
+				else if(cnt==maxcnt && tempsum<maxsum)
+				{
+//					cout<<"t: "<<tempsum<<" m: "<<maxsum<<endl;
+					maxsum=tempsum;
+					fstarti=j;
+					fendi=i;
+					
+					
+				}
+				break;	
+			}
+					
+		}
+		if(cnt>maxcnt)
+		{
+//			cout<<"tc: "<<tempsum<<" m: "<<maxsum<<endl;
+			maxcnt=cnt;
+			maxsum=tempsum;
+			fstarti=j;
+			fendi=i;
+			
+			
+		}
+		else if(cnt==maxcnt && tempsum<maxsum)
+		{
+		//	cout<<"t: "<<tempsum<<" m: "<<maxsum<<endl;
+			maxsum=tempsum;
+			fstarti=j;
+			fendi=i;
+			
+		}	
+	}
+//	cout<<"t: "<<tempsum<<" m: "<<maxsum<<" fs: "<<fstarti<<" fe: "<<fendi<<endl;
+	if(cnt==0 && maxi!=0)
+	{
+		cout<<"1,"<<pals[0]<<","<<pals[0]<<endl;
+		return 0;
+	}
+	else if(cnt==0 && maxi==0)
+	{
+		cout<<"0,0,0"<<endl;
+		return 0;
+	}
+	cout<<(fendi-fstarti+1)<<","<<pals[fstarti]<<","<<pals[fendi]<<endl;
+	return 0;
+}

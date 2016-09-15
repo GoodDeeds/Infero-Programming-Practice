@@ -1,0 +1,68 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	long long n1,n2,n3,i,j,k,y,t1,t2,t3;
+	long double a1,a2,a3;
+	cin>>n1>>n2>>n3>>y;
+	cout<<fixed;
+	cout<<setprecision(2);
+	if(n1+n2*2+n3*3<y)
+	{
+		cout<<"Not Possible"<<endl;
+		return 0;
+	}
+	t1=y-(n2*2+n3*3);
+	if(t1<=0 || n1==0)
+	{
+		cout<<"One mark questions need not be attempted, so no minimum accuracy rate applicable"<<endl;
+	}
+	else
+	{
+		a1=(((long double)(n1+t1))/((long double)(2*n1))*100);
+		/*if((a1-(int)(a1))<=0.5)
+			a1++;
+		
+		a1/=100.00;	*/
+	/*	if((n1+t1)==(2*n1))
+		{
+			cout<<"Minimum Accuracy rate required for one mark question is 100%"<<endl;
+		}
+		else*/ cout<<"Minimum Accuracy rate required for one mark question is "<<a1<<"%"<<endl;
+	}
+	t2=y-(n1+n3*3);
+	if(t2<=0 || n2==0)
+	{
+		cout<<"Two mark questions need not be attempted, so no minimum accuracy rate applicable"<<endl;
+	}
+	else
+	{
+		a2=(((long double)(n2*2+t2))/((long double)(4*n2))*100);	
+		/*if((a2-(int)(a2))<=0.5)
+			a2++;
+		a2/=100.00;*/
+		/*if((n2*2+t2)==(4*n2))
+		{
+			cout<<"Minimum Accuracy rate required for Two mark question is 100%"<<endl;
+		}
+		else*/ cout<<"Minimum Accuracy rate required for Two mark question is "<<a2<<"%"<<endl;
+	}
+	t3=y-(n2*2+n1);
+	if(t3<=0 || n3==0)
+	{
+		cout<<"Three mark questions need not be attempted, so no minimum accuracy rate applicable"<<endl;	
+	}
+	else
+	{
+		a3=(((long double)(n3*3+t3))/((long double)(6*n3))*100);
+		/*if((a3-(int)(a3))<=0.5)
+			a3++;
+		a3/=100.00;*/
+		/*if((n3*3+t3)==(6*n3))
+		{
+			cout<<"Minimum Accuracy rate required for Three mark question is 100%"<<endl;
+		}
+		else */cout<<"Minimum Accuracy rate required for Three mark question is "<<a3<<"%"<<endl;	
+	}
+	return 0;
+}
