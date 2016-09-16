@@ -49,6 +49,52 @@ void printarr(long long *arr, long long n)
 
 int main()
 {
+	int r,c;
+	char val;
+	int *cols=new int[c];
+	int *rows=new int[r];
+	vectc temp;
+	flt(i,0,r)
+	{
+		rows[i]=0;
+	}
+	flt(i,0,c)
+	{
+		cols[i]=0;
+	}	
+	sci(r);
+	sci(c);
+	vect2c arr;
+//	cout<<"r: "<<r<<" c: "<<c<<endl;
 	
+	flt(i,0,r)
+	{
+		temp.clear();
+		scc(val);
+		flt(j,0,c)
+		{
+			scc(val);
+			temp.pb(val);
+			if(val=='S')
+			{
+			//	cout<<"i: "<<i<<" j: "<<j<<" v: "<<val<<endl;
+				rows[i]=1;
+				cols[j]=1;
+			}
+		}
+		arr.pb(temp);
+	}
+	ll count=0;
+	flt(i,0,r)
+	{
+		flt(j,0,c)
+		{
+			if(rows[i]!=1 || cols[j]!=1)
+			{
+				count++;
+			}
+		}
+	}
+	cout<<count<<endl;
 	return 0;
 }

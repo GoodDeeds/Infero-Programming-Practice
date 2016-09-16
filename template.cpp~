@@ -12,7 +12,7 @@ using namespace std;
 #define fle(i,low,high) for(long long i=low;i<=high;i++)
 #define fge(i,low,high) for(long long i=low;i>=high;i--)
 #define sci(n) scanf("%d",&n)
-#define scll(n) scanf("%l64d",&n)
+#define scll(n) scanf("%lld",&n)
 #define scl(n) scanf("%ld",&n)
 #define scf(n) scanf("%f",&n)
 #define scd(n) scanf("%lf",&n)
